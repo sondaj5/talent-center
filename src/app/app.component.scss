@@ -1,0 +1,75 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.dont-display {
+	display: none;
+}
+
+app-navbar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 9999;
+}
+
+.app-wrapper {
+	position: relative;
+	z-index: 22;
+}
+
+.video-container {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+
+	video {
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+	}
+
+	.video-overlay {
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		background-color: #00121a;
+		opacity: 0.93;
+		-webkit-transition: opacity 1s ease-in-out;
+		-moz-transition: opacity 1s ease-in-out;
+		-ms-transition: opacity 1s ease-in-out;
+		-o-transition: opacity 1s ease-in-out;
+		transition: opacity 1s ease-in-out;
+	}
+
+	.video-overlay-rest {
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		background-color: #fff;
+		z-index: 5;
+		opacity: 1;
+		-webkit-transition: opacity 0.4s ease-out;
+		-moz-transition: opacity 0.4s ease-out;
+		-ms-transition: opacity 0.4s ease-out;
+		-o-transition: opacity 0.4s ease-out;
+		transition: opacity 0.4s ease-out;
+	}
+
+	.fadeout {
+		opacity: 0.7;
+	}
+
+	.fadeout2 {
+		opacity: 0;
+	}
+}

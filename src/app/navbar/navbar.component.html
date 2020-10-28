@@ -1,0 +1,27 @@
+<mat-toolbar [ngClass]="{'navbar-flipped-animation': true, 'navbar-flipped': visibe$ | async}">
+  <span><img src="../../assets/logo.png"></span>
+  <span class="sub-text">Talent Center</span>
+  <span class="example-spacer"></span>
+
+  <ng-container *ngIf="loggedIn | async; else elseTemplate">
+    <button mat-icon-button class="example-icon" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <button mat-icon-button class="example-icon" routerLink="/login">
+      <mat-icon>send</mat-icon>
+    </button>
+  </ng-template>
+
+  <button mat-icon-button class="example-icon favorite-icon" routerLink="/details">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon favorite-icon" routerLink="/profile">
+    <mat-icon>person</mat-icon>
+  </button>
+
+  <button mat-icon-button class="example-icon" routerLink="/search">
+    <mat-icon>search</mat-icon>
+  </button>
+</mat-toolbar>

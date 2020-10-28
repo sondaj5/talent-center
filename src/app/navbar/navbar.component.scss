@@ -1,0 +1,26 @@
+.example-spacer {
+	flex: 1 1 auto;
+}
+
+.sub-text {
+	font-size: 1.1rem;
+	padding-left: 0.6rem;
+	padding-top: 0.6rem;
+	font-weight: 100;
+}
+
+mat-toolbar {
+	background-color: #00374f;
+}
+
+.navbar-flipped-animation {
+	-webkit-transition: margin-top 0.4s ease-in-out;
+	-moz-transition: margin-top 0.4s ease-in-out;
+	-ms-transition: margin-top 0.4s ease-in-out;
+	-o-transition: margin-top 0.4s ease-in-out;
+	transition: margin-top 0.4s ease-in-out;
+	margin-top: -70px;
+}
+.navbar-flipped {
+	margin-top: 0;
+}

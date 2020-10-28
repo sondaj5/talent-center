@@ -1,0 +1,75 @@
+<div class="details-container">
+  <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center" style="margin-top: 6rem;">
+    <h1 class="display-4">Search Results</h1>
+    <p class="lead">query string ?q={{searchQuery}}</p>
+  </div>
+
+  <div class="container">
+    <div style="margin-bottom: 4rem;display: flex;
+    justify-content: center;
+    align-items: center;
+    " *ngIf="!searchResults">
+      <mat-spinner class="spinner"></mat-spinner>
+    </div>
+    <div *ngIf="searchResults">
+      <div class="container-category" *ngFor="let category of searchResults | keyvalue">
+        <h1>{{ category.key == 'label' ? 'Skills' : category.key }}</h1>
+
+        <ng-container *ngIf="category.value?.length == 0">No results</ng-container>
+
+        <container-element [ngSwitch]="category.key">
+          <some-element *ngSwitchCase="'label'">
+            <mat-chip-list class="example-chip" cdkDropListOrientation="horizontal">
+              <mat-chip class="example-box" *ngFor="let label of category.value">
+                {{label.Name}}
+              </mat-chip>
+            </mat-chip-list>
+          </some-element>
+          <some-element *ngSwitchDefault>
+            <div *ngFor="let result of category.value">
+              <app-search-results-user-card [result]="result"></app-search-results-user-card>
+            </div>
+          </some-element>
+        </container-element>
+      </div>
+    </div>
+  </div>
+
+  <footer class="pt-4 my-md-5 pt-md-5 border-top">
+    <div class="row">
+      <div class="col-12 col-md">
+        <img class="mb-2" src="../../assets/logo_small.png" alt="" width="24" height="24">
+        <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Features</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Cool stuff</a></li>
+          <li><a class="text-muted" href="#">Random feature</a></li>
+          <li><a class="text-muted" href="#">Team feature</a></li>
+          <li><a class="text-muted" href="#">Stuff for developers</a></li>
+          <li><a class="text-muted" href="#">Another one</a></li>
+          <li><a class="text-muted" href="#">Last time</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Resources</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Resource</a></li>
+          <li><a class="text-muted" href="#">Resource name</a></li>
+          <li><a class="text-muted" href="#">Another resource</a></li>
+          <li><a class="text-muted" href="#">Final resource</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>About</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Team</a></li>
+          <li><a class="text-muted" href="#">Locations</a></li>
+          <li><a class="text-muted" href="#">Privacy</a></li>
+          <li><a class="text-muted" href="#">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</div>

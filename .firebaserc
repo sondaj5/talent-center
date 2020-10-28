@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "talentcenter-5166d"
+  },
+  "targets": {
+    "talentcenter-5166d": {
+      "hosting": {
+        "talent-center": [
+          "talent-center"
+        ]
+      }
+    }
+  }
+}

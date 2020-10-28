@@ -1,0 +1,7 @@
+{
+	"/api/*": {
+		"target": "https://www.tai-pan.net/ITC/api/",
+		"secure": false,
+		"logLevel": "debug"
+	}
+}
