@@ -13,6 +13,7 @@ const routes: Routes = [
 	{ path: 'search', component: SearchComponent, canActivate: [LoggedGuard] },
 	{ path: 'results', component: SearchResultsComponent, canActivate: [LoggedGuard] },
 	{ path: 'details', component: DetailsComponent, canActivate: [LoggedGuard] },
+	{ path: 'details/:id', component: DetailsComponent, canActivate: [LoggedGuard] },
 	{ path: 'profile', component: ProfileComponent, canActivate: [LoggedGuard] },
 	{ path: 'profile/:id', component: ProfileComponent, canActivate: [LoggedGuard] },
 	{ path: '**', redirectTo: 'login' },
