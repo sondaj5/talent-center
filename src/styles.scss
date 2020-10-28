@@ -12,3 +12,17 @@ body {
 circle {
 	stroke: #009688 !important;
 }
+
+.mat-form-field-ripple {
+	background-color: #009688 !important;
+	opacity: 1 !important;
+	transform: none !important;
+}
+
+.example-chip-list {
+	.mat-form-field-label {
+		span {
+			color: #009688 !important;
+		}
+	}
+}
