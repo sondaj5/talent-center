@@ -20,11 +20,11 @@ export class LoginComponent implements OnInit {
 	});
 
 	registerForm = new FormGroup({
-		FirstName: new FormControl('', [Validators.required, Validators.minLength(4)]),
-		Surname: new FormControl('', [Validators.required, Validators.minLength(4)]),
-		Department: new FormControl('', [Validators.required, Validators.minLength(4)]),
-		LoginName: new FormControl('', [Validators.required, Validators.minLength(4)]),
-		Password: new FormControl('', [Validators.required, Validators.minLength(4)]),
+		FirstName: new FormControl('', [Validators.required, Validators.minLength(2)]),
+		Surname: new FormControl('', [Validators.required, Validators.minLength(2)]),
+		Department: new FormControl('', [Validators.required, Validators.minLength(2)]),
+		LoginName: new FormControl('', [Validators.required, Validators.minLength(2)]),
+		Password: new FormControl('', [Validators.required, Validators.minLength(2)]),
 	});
 
 	registration = false;
@@ -51,8 +51,6 @@ export class LoginComponent implements OnInit {
 	submitRegisterForm() {
 		const source = this.registerForm.value;
 
-		console.warn(source, this.registerForm.invalid, this.registerForm);
-
 		if (this.registerForm.invalid) {
 			this.registerError = 'All the fields are required';
 			return false;
@@ -72,9 +70,6 @@ export class LoginComponent implements OnInit {
 
 		this.loginService.login(login, password);
 
-		if (this.loginService.isLoggedIn()) {
-		}
-
 		return false;
 	}
 
@@ -85,8 +80,21 @@ export class LoginComponent implements OnInit {
 			body.set(k, data[k]);
 		}
 
-		this.http.post<any>(LABEL_GET_USER_URL, body, {}).subscribe((a) => {
-			console.warn(a);
-		});
+		this.http
+			.post<any>(LABEL_GET_USER_URL, body.toString(), {
+				headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded'),
+			})
+			.subscribe(
+				(a) => {
+					this.registerError = undefined;
+
+					this.loginService.login(data['LoginName'], data['Password']);
+				},
+				(error) => {
+					this.registerError = 'User already exists';
+
+					console.warn(error);
+				}
+			);
 	}
 }

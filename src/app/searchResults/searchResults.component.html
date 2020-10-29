@@ -1,7 +1,7 @@
 <div class="details-container">
   <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center" style="margin-top: 6rem;">
     <h1 class="display-4">Search Results</h1>
-    <p class="lead">query string ?q={{searchQuery}}</p>
+    <p class="lead">showing results for "{{searchQuery}}"</p>
   </div>
 
   <div class="container">
@@ -13,22 +13,31 @@
     </div>
     <div *ngIf="searchResults">
       <div class="container-category" *ngFor="let category of searchResults | keyvalue">
-        <h1>{{ category.key == 'label' ? 'Skills' : category.key }}</h1>
+        <h1>
+          {{ category.key == 'category' ? 'Categories' : '' }}
+          {{ category.key == 'label' ? 'Skills' : '' }}
+          {{ category.key == 'person' ? 'People' : '' }}
+        </h1>
 
         <ng-container *ngIf="category.value?.length == 0">No results</ng-container>
 
         <container-element [ngSwitch]="category.key">
-          <some-element *ngSwitchCase="'label'">
-            <mat-chip-list class="example-chip" cdkDropListOrientation="horizontal">
-              <mat-chip class="example-box" *ngFor="let label of category.value">
-                {{label.Name}}
-              </mat-chip>
-            </mat-chip-list>
+          <some-element *ngSwitchCase="'person'">
+            <div *ngFor="let result of category.value">
+              <app-search-results-person-card [result]="result"></app-search-results-person-card>
+            </div>
           </some-element>
-          <some-element *ngSwitchDefault>
+          <some-element *ngSwitchCase="'label'">
             <div *ngFor="let result of category.value">
               <app-search-results-user-card [result]="result"></app-search-results-user-card>
             </div>
+          </some-element>
+          <some-element *ngSwitchDefault>
+            <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
+              <mat-chip class="example-box" cdkDrag *ngFor="let vegetable of category.value">
+                {{vegetable.Description}}
+              </mat-chip>
+            </mat-chip-list>
           </some-element>
         </container-element>
       </div>

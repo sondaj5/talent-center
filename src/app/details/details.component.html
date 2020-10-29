@@ -2,14 +2,7 @@
   <div class="container emp-profile">
     <div class="row">
       <div class="col-12">
-        <div class="card">
-
-          {{ details | json}}
-
-
-          {{ users | json}}
-
-        </div>
+        <app-search-results-user-card [result]="details"></app-search-results-user-card>
       </div>
     </div>
   </div>

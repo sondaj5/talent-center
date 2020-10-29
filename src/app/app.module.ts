@@ -15,6 +15,7 @@ import { CommonModule } from '@angular/common';
 import { SearchResultsComponent } from './searchResults/searchResults.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UserCardComponent } from './searchResults/cards/user.card';
+import { PersonCardComponent } from './searchResults/cards/person.card';
 import { UserSkillsComponent } from './user-skills/user-skills.component';
 
 @NgModule({
@@ -27,6 +28,7 @@ import { UserSkillsComponent } from './user-skills/user-skills.component';
 		LoginComponent,
 		ProfileComponent,
 		UserCardComponent,
+		PersonCardComponent,
 		UserSkillsComponent,
 	],
 	imports: [

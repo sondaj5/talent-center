@@ -16,21 +16,22 @@ export class ProfileComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		let usr = localStorage.getItem('user');
+		let usr = JSON.parse(localStorage.getItem('user'));
 
 		this.activatedRoute.paramMap.subscribe((params) => {
 			let id = params.get('id');
 
-			if (id) {
-				this.loadUser(id);
-			} else {
-				this.setProfile(JSON.parse(usr));
+			if (!id) {
+				id = usr['ID'];
 			}
+
+			this.loadUser(id);
 		});
 	}
 
 	loadUser(id) {
-		this.http.get<any[]>('https://www.tai-pan.net/ITC/api/Person/' + id).subscribe((a) => {
+		console.warn('load user', id);
+		this.http.get<any>('https://www.tai-pan.net/ITC/api/Person/' + id).subscribe((a) => {
 			this.setProfile(a);
 		});
 	}

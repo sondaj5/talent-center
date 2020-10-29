@@ -30,24 +30,9 @@ export class DetailsComponent implements OnInit {
 		this.http.get<any[]>('https://www.tai-pan.net/ITC/api/Label/' + id).subscribe((a) => {
 			this.setDetails(a);
 		});
-
-		this.http.get<any[]>('https://www.tai-pan.net/ITC/api/Person').subscribe((a) => {
-			this.setUsers(a, id);
-		});
 	}
 
 	setDetails(details) {
 		this.details = details;
-	}
-	setUsers(users, id) {
-		this.users = users.filter((a) => {
-			for (let userLabel of a.tbPersonLabels) {
-				if (userLabel['$id'] == id) {
-					return true;
-				}
-			}
-
-			return false;
-		});
 	}
 }

@@ -65,6 +65,7 @@ export class SearchService {
 
 					if (field.indexOf(query) >= 0) {
 						filtered.push(item);
+						return;
 					}
 				}
 			}

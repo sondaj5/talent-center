@@ -76,9 +76,10 @@
                         <label style="font-weight:bold;">Skills</label>
                       </div>
                       <div class="col-md-8 col-6">
+
                         {{ profile?.tbPersonLabels?.length == 0 ? 'No added skills' : '' }}
 
-                        <app-user-skills [userSkills]="profile?.tbPersonLabels"></app-user-skills>
+                        <app-user-skills [userSkills]="profile?.tbPersonLabels" [user]="profile"></app-user-skills>
                       </div>
                     </div>
                   </div>
